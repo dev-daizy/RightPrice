@@ -4,6 +4,8 @@ import { scrapeAmazonProduct } from "../scraper";
 import { connectToDB } from "../mongoose";
 import Product from "../models/product.model";
 import { getAveragePrice, getHighestPrice, getLowestPrice } from "../utils";
+import { User } from "@/types";
+import { generateEmailBody, sendEmail } from "../nodemailer";
 export async function scrapeAndStoreProduct(productUrl: string) {
     if(!productUrl) return ;
 
@@ -101,7 +103,7 @@ export async function getProductById(productId: string) {
   
       if(!product) return;
   
-      const userExists = product.users.some((user: User) => user.email === userEmail);
+      const userExists = product.users.some((user: User ) => user.email === userEmail);
   
       if(!userExists) {
         product.users.push({ email: userEmail });
