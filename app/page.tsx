@@ -6,7 +6,7 @@ import HeroCarousel from '@/components/HeroCarousel';
 import { getAllProducts } from "@/lib/actions";
 import ProductCard from "@/components/ProductCard"
 import '@/styles/TextChanger.css'
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"; // or wherever your NextAuth config is
+import { authOptions } from "@/lib/auth"; // or wherever your NextAuth config is
 import { getServerSession } from "next-auth";
 import Link from 'next/link';
 import { Twitter, Github } from 'lucide-react'; // Ensure you have lucide-react installed for icons
