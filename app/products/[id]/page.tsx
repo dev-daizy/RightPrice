@@ -8,12 +8,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-type PageProps = {
-  params: {
-    id: string;
-  };
+
+type Props = {
+  params: { id: string };
 };
-const ProductDetails = async ({ params }: PageProps) => {
+
+export default async function ProductDetails({ params }: Props) {
   const { id } = params;
 
   const product: Product | null = await getProductById(id);
@@ -211,4 +211,3 @@ const ProductDetails = async ({ params }: PageProps) => {
   )
 }
 
-export default ProductDetails
