@@ -6,8 +6,20 @@ import HeroCarousel from '@/components/HeroCarousel';
 import { getAllProducts } from "@/lib/actions";
 import ProductCard from "@/components/ProductCard"
 import '@/styles/TextChanger.css'
+import { authOptions } from "@/app/api/auth/[...nextauth]/route"; // or wherever your NextAuth config is
+import { getServerSession } from "next-auth";
+import Link from 'next/link';
+import { Twitter, Github } from 'lucide-react'; // Ensure you have lucide-react installed for icons
+
 const Home = async () => {
-  const allProducts = await getAllProducts();
+  const session = await getServerSession(authOptions);
+
+  const userId = session?.user?.id; // real MongoDB ObjectId from DB
+
+  if (!userId) {
+    return <p className="text-center text-red-500">Please sign in to see your products.</p>;
+  }
+  const allProducts = await getAllProducts(userId);
     // const words = ['Price','Time', 'Place', 'Buy'];
     // // const [selectedWord, setSelectedWord] = useState(words[0]);
     // const [wordIndex, setWordIndex] = useState(0);
@@ -73,7 +85,7 @@ const Home = async () => {
     
           </span>
           </p>
-          <Searchbar />
+          <Searchbar userId={userId} />
         </div>
         <HeroCarousel />
       </div>
@@ -81,7 +93,7 @@ const Home = async () => {
 
      <section className="trending-section">
       <h2 className="section-text">
-        Trending
+        your products list
       </h2>
       <div className="flex flex-wrap gap-x-8 gap-y-16">
           {allProducts?.map((product) => (
@@ -89,8 +101,52 @@ const Home = async () => {
           ))}
         </div>
      </section>
+
     
     
+      {/* Footer */}
+
+<footer className="bg-gray-900 text-white py-8 px-4 rounded-t-xl ">
+  <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
+    <p className="text-sm mb-4 md:mb-0">© {new Date().getFullYear()} RightPrice. All rights reserved. Built with ❤️ by Dev_daizy.</p>
+
+    <div className="flex space-x-6">
+      <a
+        href="https://x.com/dev_daizy" // Replace with your X.com (Twitter) username
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:text-blue-400 transition"
+      >
+        <Twitter className="w-6 h-6" />
+      </a>
+      <a
+        href="https://github.com/dev-daizy" // Replace with your GitHub repo
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:text-gray-400 transition"
+      >
+        <Github className="w-6 h-6" />
+      </a>
+    </div>
+    {/* extra pages */}
+    <div>
+      <ul className="flex space-x-6 mt-4 md:mt-0">
+        <li>
+          <Link href="/footer/about" className="hover:text-blue-400 transition">About</Link>
+        </li>
+        <li>
+          <Link href="/footer/contact" className="hover:text-blue-400 transition">Contact</Link>
+        </li>
+        <li>
+          <Link href="/footer/privacy" className="hover:text-blue-400 transition">Privacy Policy</Link>
+        </li>
+        <li>
+          <Link href="/footer/terms" className="hover:text-blue-400 transition">Terms of Service</Link>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
     
     
     </>

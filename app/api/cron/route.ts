@@ -6,6 +6,9 @@ import Product from "@/lib/models/product.model";
 import { scrapeAmazonProduct } from "@/lib/scraper";
 import { generateEmailBody, sendEmail } from "@/lib/nodemailer";
 
+// import NextAuth from "next-auth";
+// import GoogleProvider from "next-auth/providers/google";
+
 export const maxDuration = 7; // This function can run for a maximum of 300 seconds
 export const dynamic = "force-dynamic";
 export const revalidate = 0;

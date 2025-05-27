@@ -1,3 +1,12 @@
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+export function cn(...classes: (string | undefined | null | false)[]) {
+  return classes.filter(Boolean).join(" ");
+}
+
+// // export function cn(...inputs: ClassValue[]) {
+// //   return twMerge(clsx(inputs))
+// // }
 import { PriceHistoryItem, Product } from "@/types";
 
 const Notification = {
@@ -51,6 +60,7 @@ export function extractDescription($: any) {
       const textContent = elements
         .map((_: any, element: any) => $(element).text().trim())
         .get()
+        
         .join("\n");
       return textContent;
     }

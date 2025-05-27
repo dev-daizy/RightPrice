@@ -162,21 +162,35 @@ const ProductDetails = async ({ params: { id } }: Props) => {
           </h3>
 
           <div className="flex flex-col gap-4">
-            {product?.description?.split('\n')}
-          </div>
+  {product?.description
+    ?.split('\n')
+    .filter(line => line.trim() !== '')
+    .slice(5, 15)
+    .map((line, index) => (
+      <p key={index} className="text-sm text-gray-700 leading-relaxed">
+        {line}
+      </p>
+  ))}
+</div>
+
         </div>
 
-        <button className="btn w-fit mx-auto flex items-center justify-center gap-3 min-w-[200px]">
-          <Image 
-            src="/assets/icons/bag.svg"
-            alt="check"
-            width={22}
-            height={22}
-          />
+        <button className="btn w-fit mx-auto flex items-center justify-center gap-3 min-w-[100px]">
+          <a
+  href={product?.url || '/'}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="btn flex items-center justify-center gap-3 min-w-[100px] text-white"
+>
+  <Image 
+    src="/assets/icons/bag.svg"
+    alt="check"
+    width={22}
+    height={22}
+  />
+  <span className="text-base">Buy Now</span>
+</a>
 
-          <Link href="/" className="text-base text-white">
-            Buy Now
-          </Link>
         </button>
       </div>
 
