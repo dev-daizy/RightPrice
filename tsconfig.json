@@ -1,27 +1,42 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "baseUrl": ".",
     "strict": true,
+    "skipLibCheck": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "jsx": "preserve",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "types": [
+      "next",
+      "node"
+    ],
+    // REMOVE typeRoots unless you have custom .d.ts files you want to include
+    // "typeRoots": [
+    //   "./node_modules/@types"
+    // ],
+    "allowJs": true,
+    "incremental": true,
+    "plugins": [
+      { "name": "next" }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+    // Do NOT include "src/types/**/*.d.ts" unless you have custom global types
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

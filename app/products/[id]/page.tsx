@@ -1,26 +1,36 @@
 import Modal from "@/components/Modal";
 import PriceInfoCard from "@/components/PriceInfoCard";
 import ProductCard from "@/components/ProductCard";
-import { getProductById, getSimilarProducts } from "@/lib/actions"
+import { getProductById, getSimilarProducts } from "@/lib/actions";
 import { formatNumber } from "@/lib/utils";
 import { Product } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import type { Metadata, ResolvingMetadata } from "next";
+export const dynamic = 'force-dynamic';
 
+// export default async function Page({
+//   params,
+//   searchParams,
+// }: {
+//   params: { id: string };
+//   searchParams?: { [key: string]: string | string[] | undefined };
+// }) {
+//   const { id } = params;
 
-type Props = {
-  params: { id: string };
-};
+//   const product: Product | null = await getProductById(id);
+//   if (!product) redirect("/");
 
-export default async function ProductDetails({ params }: Props) {
+//   const similarProducts = await getSimilarProducts(id);
+export default async function ProductDetails({ params }: any) {
   const { id } = params;
 
-  const product: Product | null = await getProductById(id);
+  const product = await getProductById(id);
   if (!product) redirect("/");
 
   const similarProducts = await getSimilarProducts(id);
-
+  
   return (
     <div className="product-container">
       <div className="flex gap-28 xl:flex-row flex-col">
@@ -166,9 +176,9 @@ export default async function ProductDetails({ params }: Props) {
           <div className="flex flex-col gap-4">
   {product?.description
     ?.split('\n')
-    .filter(line => line.trim() !== '')
+    .filter((line: string) => line.trim() !== '')
     .slice(5, 15)
-    .map((line, index) => (
+    .map((line: string, index: number) => (
       <p key={index} className="text-sm text-gray-700 leading-relaxed">
         {line}
       </p>
@@ -210,4 +220,3 @@ export default async function ProductDetails({ params }: Props) {
     </div>
   )
 }
-
