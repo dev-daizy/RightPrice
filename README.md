@@ -1,6 +1,3 @@
-Here’s your **final project summary** for *RightPrice*, written in a clean, professional, and honest way. You can use this in your Notion, GitHub README, portfolio — wherever you like.
-
----
 
 # 💸 RightPrice — E-commerce Price Tracker
 
