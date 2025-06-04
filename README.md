@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Here’s your **final project summary** for *RightPrice*, written in a clean, professional, and honest way. You can use this in your Notion, GitHub README, portfolio — wherever you like.
 
-## Getting Started
+---
 
-First, run the development server:
+# 💸 RightPrice — E-commerce Price Tracker
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**🔗 Live:** [right-price.vercel.app](https://right-price.vercel.app/)
+**📁 GitHub:** [github.com/dev-daizy/RightPrice](https://github.com/dev-daizy/RightPrice)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧠 Project Summary
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+**RightPrice** is a full-stack web app that tracks the price history of products from e-commerce websites (like Amazon) and notifies users when prices drop. It was built as a final year college project, but designed like a real-world SaaS product.
 
-## Learn More
+The core idea: users paste a product link, and the app fetches, stores, and displays the price history, with email alerts when a price drop is detected.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ⚙️ Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+| Layer        | Technology                       |
+| ------------ | -------------------------------- |
+| Frontend     | **Next.js**, Tailwind CSS        |
+| Backend      | Node.js (API routes in Next.js)  |
+| Database     | **MongoDB Atlas**                |
+| Scraping     | **BrightData** proxies + Cheerio |
+| Auth         | **NextAuth.js** (Google login)   |
+| Email Alerts | **Nodemailer**                   |
+| Payments     | **Razorpay** (test mode)         |
+| Hosting      | **Vercel**                       |
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔐 Key Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* ✅ **Google Authentication**
+* 🔍 **Track Prices**: Paste Amazon product URLs
+* 📈 **Price History**: Shows current, minimum, and maximum prices
+* 📧 **Email Alerts**: Get notified when prices drop
+* 🚫 **Product Limit**: Max 5 tracked products per free user
+* 💳 **Premium Plan (WIP)**: Unlock unlimited tracking via Razorpay
+* 🔒 **Private Data**: Users can only view/manage their own tracked products
+
+---
+
+## 🧪 Challenges Faced
+
+* Managing scraping reliability with BrightData and rate limits
+* Implementing user-specific data handling with MongoDB
+* UI feedback issues when redirecting after crossing product limits
+* Balancing real-world features vs. academic expectations
+
+---
+
+## 💬 Reflection
+
+> This project taught me how to build and ship a real, user-facing product — not just for grades, but to solve a real-world pain point.
+> Even though it was underappreciated during evaluation, it gave me hands-on experience with full-stack development, user auth, and payment integration — things that *actually matter* when building real products.
